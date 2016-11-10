@@ -26,16 +26,16 @@ def balanced_parenthesis(input_str):
 
 def extract_choices(input_str):
   # From '... <choice1|choice2> ...' extract ['choice1|choice2']
-  return re.findall("\<([^\>]*)\>", input_text)
+  return re.findall("\<([^\>]*)\>", input_str)
 
 def remove_choices(input_str):
   # Replace '<choice1|choice2>' with '<>' in text string
-  return re.sub("(\.*)\<([^\>]*)\>(\.*)", "<>", input_text)
+  return re.sub("(\.*)\<([^\>]*)\>(\.*)", "<>", input_str)
 
 def split_choices(choice_list):
   # split 'choice1|choice2' into list ['choice1', 'choice2']
   for idx, i in enumerate(choice_list):
-   choice_list[idx] = i.split('|')
+    choice_list[idx] = i.split('|')
 
   return choice_list
 
@@ -48,6 +48,7 @@ def expand_choices(input_str, options, level=0):
       expand_choices(replaced_str, options, level + 1)
     else:
       output_text.append(replaced_str)
+
 
 def print_results(list_of_results):
   for output_str in list_of_results:
