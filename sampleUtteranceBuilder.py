@@ -51,8 +51,10 @@ def expand_choices(input_str, options, level=0):
 
 
 def print_results(list_of_results):
-  for output_str in list_of_results:
+  # Remove duplicate list entries and replace successive spaces with one space
+  for output_str in list(set(list_of_results)):
     print ' '.join(output_str.split())
+
 
 balanced_parenthesis(input_text)
 choices = extract_choices(input_text)
